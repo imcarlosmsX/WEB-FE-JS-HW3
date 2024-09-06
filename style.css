@@ -1,0 +1,111 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding-bottom: 100px;
+}
+
+/* Header Styles */
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Main Content Styles */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.output {
+    display: none;
+    margin-top: 15px;
+}
+
+.card:hover .output {
+    display: block;
+}
+
+pre {
+    background-color: #f4f4f494;
+    padding: 15px;
+    border-left: 4px solid #4CAF50;
+    overflow-x: auto;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+pre code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Syntax Highlighting */
+.keyword {
+    color: #c678dd; /* Purple for keywords */
+}
+
+.function {
+    color: #61afef; /* Blue for functions */
+}
+
+.string {
+    color: #98c379; /* Green for strings */
+}
+
+.number {
+    color: #d19a66; /* Orange for numbers */
+}
+
+.parameter {
+    color: #e06c75; /* Red for parameters */
+}
+
+.method {
+    color: #56b6c2; /* Cyan for methods */
+}
+
+/* Output Styles */
+
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+}
