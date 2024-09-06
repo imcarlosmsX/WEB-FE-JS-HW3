@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Async Concepts</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Understanding JavaScript Asynchronous Concepts</h1>
+        </div>
+    </header>
+    <main class="container">
+        <!-- JavaScript Async -->
+        <section id="async" class="card">
+            <h2>JavaScript Async</h2>
+            <p>JavaScript is synchronous by default and single-threaded. This means code is executed in a specific order, and only one thing can happen at a time. Asynchronous JavaScript, however, allows non-blocking execution, meaning code can be executed in the background while waiting for tasks to complete.</p>
+            <pre><code>
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Start'</span>);
+<span class="function">setTimeout</span>(() => {
+    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Async operation'</span>);
+}, <span class="number">2000</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'End'</span>);
+            </code></pre>
+            <div class="output">
+                <h3>Expected Output:</h3>
+                <pre><code>
+Start
+End
+Async operation (after 2 seconds)
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Callback -->
+        <section id="callback" class="card">
+            <h2>Callback</h2>
+            <p>A callback is a function passed into another function as an argument to be executed later. It allows for asynchronous code execution by delaying a function call until another function completes.</p>
+            <pre><code>
+<span class="keyword">function</span> <span class="function">fetchData</span>(<span class="parameter">callback</span>) {
+    <span class="function">setTimeout</span>(() => {
+        <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Data fetched'</span>);
+        <span class="parameter">callback</span>();
+    }, <span class="number">2000</span>);
+}
+
+<span class="keyword">function</span> <span class="function">displayData</span>() {
+    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Displaying data'</span>);
+}
+
+<span class="function">fetchData</span>(<span class="function">displayData</span>);
+            </code></pre>
+            <div class="output">
+                <h3>Expected Output:</h3>
+                <pre><code>
+Data fetched (after 2 seconds)
+Displaying data
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Promise -->
+        <section id="promise" class="card">
+            <h2>Promise</h2>
+            <p>A Promise is an object representing the eventual completion or failure of an asynchronous operation. Promises provide a cleaner way to handle asynchronous tasks compared to callbacks.</p>
+            <pre><code>
+<span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="function">Promise</span>((<span class="parameter">resolve</span>, <span class="parameter">reject</span>) => {
+    <span class="function">setTimeout</span>(() => {
+        <span class="parameter">resolve</span>(<span class="string">'Data fetched successfully'</span>);
+    }, <span class="number">2000</span>);
+});
+
+promise.<span class="method">then</span>(<span class="parameter">data</span> => <span class="keyword">console</span>.<span class="function">log</span>(<span class="parameter">data</span>))
+       .<span class="method">catch</span>(<span class="parameter">error</span> => <span class="keyword">console</span>.<span class="function">error</span>(<span class="parameter">error</span>));
+            </code></pre>
+            <div class="output">
+                <h3>Expected Output:</h3>
+                <pre><code>
+Data fetched successfully (after 2 seconds)
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Async/Await -->
+        <section id="async-await" class="card">
+            <h2>Async/Await</h2>
+            <p>Async/Await is syntactic sugar for Promises. It allows writing asynchronous code in a synchronous manner, making it easier to read and write. The <code>async</code> keyword declares an asynchronous function, while <code>await</code> pauses the execution until the Promise is resolved.</p>
+            <pre><code>
+<span class="keyword">async</span> <span class="keyword">function</span> <span class="function">fetchData</span>() {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> data = <span class="keyword">await</span> promise;
+        <span class="keyword">console</span>.<span class="function">log</span>(<span class="parameter">data</span>);
+    } <span class="keyword">catch</span> (<span class="parameter">error</span>) {
+        <span class="keyword">console</span>.<span class="function">error</span>(<span class="parameter">error</span>);
+    }
+}
+
+<span class="function">fetchData</span>();
+            </code></pre>
+            <div class="output">
+                <h3>Expected Output:</h3>
+                <pre><code>
+Data fetched successfully (after 2 seconds)
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Event Loop -->
+        <section id="event-loop" class="card">
+            <h2>Event Loop</h2>
+            <p>The Event Loop is a mechanism that JavaScript uses to handle asynchronous operations. It constantly checks the call stack and the callback queue, executing any functions waiting in the queue once the stack is empty.</p>
+            <pre><code>
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Start'</span>);
+<span class="function">setTimeout</span>(() => {
+    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Timeout callback'</span>);
+}, <span class="number">0</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'End'</span>);
+            </code></pre>
+            <div class="output">
+                <h3>Expected Output:</h3>
+                <pre><code>
+Start
+End
+Timeout callback
+                </code></pre>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 JavaScript Concepts Blog</p>
+    </footer>
+</body>
+</html>
